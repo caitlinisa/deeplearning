@@ -91,8 +91,12 @@ model.add(Dense(10, activation = "softmax"))
 
 model.compile(optimizer = "adam", loss = "categorical_crossentropy", metrics = ["accuracy"])
 
+callbacks = [keras.callbacks.EarlyStopping(monitor='val_loss',
+                              patience=3,
+                              verbose=1, mode='auto')]
+
 #train model on training set
-model.fit(train_images, train_labels_one_hot, epochs=10, validation_split=0.2)
+model.fit(train_images, train_labels_one_hot, epochs=50, validation_split=0.2,verbose=1)
 
 
 
